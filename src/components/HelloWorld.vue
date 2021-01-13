@@ -1,16 +1,28 @@
 <template>
     <div class="out-wrap">
         <div class="inner-wrap">哈哈哈</div>
-        <cube-button>111</cube-button>
+        <cube-button>{{seller}}</cube-button>
         <cube-input></cube-input>
     </div>
 </template>
 
 <script>
+import {getSeller} from 'api';
+
 export default {
   name: "HelloWorld",
+  data() {
+    return {
+        seller: {}
+    }
+  },
   props: {
     msg: String
+  },
+  created() {
+    getSeller().then((seller) => {
+      this.seller = seller;
+    })
   }
 };
 </script>

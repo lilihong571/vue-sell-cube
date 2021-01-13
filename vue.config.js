@@ -1,7 +1,13 @@
-const appData = require('./data.json')
-const seller = appData.seller
-const goods = appData.goods
-const ratings = appData.ratings
+// const { resolve } = require('core-js/fn/promise');
+const appData = require('./data.json');
+const seller = appData.seller;
+const goods = appData.goods;
+const ratings = appData.ratings;
+// 起别名
+// const path = require('path');
+// function resolve(dir) {
+//   return path.join(__dirname, dir)
+// }
 module.exports = {
   css: {
     loaderOptions: {
@@ -38,5 +44,9 @@ module.exports = {
         })
       })
     }
+  },
+  chainWebpack(config) {
+    config.resolve.alias
+      .set('api', resolve('src/api'))
   }
 };
